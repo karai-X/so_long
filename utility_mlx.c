@@ -6,7 +6,7 @@
 /*   By: karai <karai@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 12:03:33 by karai             #+#    #+#             */
-/*   Updated: 2024/12/14 12:16:25 by karai            ###   ########.fr       */
+/*   Updated: 2024/12/14 17:24:18 by karai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ int	ft_key_hook(int keycode, t_mapdata *md)
 void	finish(t_mapdata *md)
 {
 	free2dim(md->map);
+	mlx_destroy_image(md->mlx, md->goal_block);
 	mlx_destroy_image(md->mlx, md->goal);
 	mlx_destroy_image(md->mlx, md->dolphin);
 	mlx_destroy_image(md->mlx, md->fish);

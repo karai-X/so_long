@@ -1,5 +1,5 @@
 CFLAGS = -Wall -Wextra -Werror
-CC = gcc
+CC = cc
 SRC = main.c\
 		get_next_line.c\
 		get_next_line_utils.c\
@@ -12,6 +12,8 @@ SRC = main.c\
 		move.c\
 		utility_mlx.c\
 
+LIBFTPRINTF = libftprintf.a
+LIBFTPRINTF_PATH = ./ft_printf
 LFLAGS = -L./mlx_linux -lmlx -lXext -lX11 -lm -lbsd
 
 OBJ = $(SRC:.c=.o)
@@ -19,19 +21,23 @@ NAME = so_long
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) libftprintf.a $(LFLAGS)
+$(NAME): $(OBJ) $(LIBFTPRINTF_PATH)/$(LIBFTPRINTF)
+	$(CC) $(CFLAGS) -o $@ $^ $(LFLAGS)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -Imlx_linux -O3 -c $< -o $@
 
+$(LIBFTPRINTF_PATH)/$(LIBFTPRINTF):
+	make -C $(LIBFTPRINTF_PATH) all
+
 clean:
+	make -C $(LIBFTPRINTF_PATH) clean
 	rm -f $(OBJ)
 
 fclean: clean
+		make -C $(LIBFTPRINTF_PATH) fclean
 		rm -f $(NAME)
 
 re: fclean all
 
 .PHONY: all clean fclean re
-
