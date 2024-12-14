@@ -6,7 +6,7 @@
 /*   By: karai <karai@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 21:49:20 by karai             #+#    #+#             */
-/*   Updated: 2024/12/13 21:14:02 by karai            ###   ########.fr       */
+/*   Updated: 2024/12/14 12:10:03 by karai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 bool	map_error_player(t_mapdata *md)
 {
-	int				i;
-	unsigned int	find_player;
+	size_t			i;
+	unsigned char	find_player;
 
 	i = 0;
 	find_player = 0;
@@ -38,8 +38,8 @@ bool	map_error_player(t_mapdata *md)
 
 bool	map_error_end(t_mapdata *md)
 {
-	int				i;
-	unsigned int	find_end;
+	size_t			i;
+	unsigned char	find_end;
 
 	i = 0;
 	find_end = 0;
@@ -47,6 +47,8 @@ bool	map_error_end(t_mapdata *md)
 	{
 		if (md->map[i / md->win_width][i % md->win_width] == 'E')
 		{
+			md->gy = i / md->win_width;
+			md->gx = i % md->win_width;
 			if (find_end == 1)
 				return (false);
 			find_end = 1;
@@ -60,8 +62,8 @@ bool	map_error_end(t_mapdata *md)
 
 bool	map_error_coin(t_mapdata *md)
 {
-	int				i;
-	unsigned int	find_coin;
+	size_t			i;
+	unsigned char	find_coin;
 
 	i = 0;
 	find_coin = 0;
@@ -69,8 +71,6 @@ bool	map_error_coin(t_mapdata *md)
 	{
 		if (md->map[i / md->win_width][i % md->win_width] == 'C')
 		{
-			if (find_coin == 1)
-				return (false);
 			find_coin = 1;
 		}
 		i += 1;
@@ -82,9 +82,9 @@ bool	map_error_coin(t_mapdata *md)
 
 bool	surrounded_leaf_is_else(t_mapdata *md)
 {
-	int	i;
-	int	ny;
-	int	nx;
+	size_t	i;
+	size_t	ny;
+	size_t	nx;
 
 	i = 0;
 	while (i < md->win_width * md->win_height)

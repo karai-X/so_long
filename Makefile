@@ -1,29 +1,32 @@
 CFLAGS = -Wall -Wextra -Werror
 CC = gcc
-SRCS = main.c\
+SRC = main.c\
 		get_next_line.c\
 		get_next_line_utils.c\
 		error_check_playable.c\
 		preprocessing.c\
 		error_check_map.c\
 		error_check_main.c\
+		error_check_file_name.c\
 		free.c\
+		move.c\
+		utility_mlx.c\
 
 LFLAGS = -L./mlx_linux -lmlx -lXext -lX11 -lm -lbsd
 
-OBJ = $(SRCS:.c=.o)
-NAME = aa
+OBJ = $(SRC:.c=.o)
+NAME = so_long
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) -o $(NAME) $(OBJ) libftprintf.a $(LFLAGS)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) libftprintf.a $(LFLAGS)
 
 %.o: %.c
-	$(CC) -Imlx_linux -O3 -c $< -o $@
+	$(CC) $(CFLAGS) -Imlx_linux -O3 -c $< -o $@
 
 clean:
-	rm -f $(NAME) $(OBJ) *~ core *.core
+	rm -f $(OBJ)
 
 fclean: clean
 		rm -f $(NAME)
