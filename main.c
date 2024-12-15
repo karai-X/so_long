@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: karai <karai@student.42tokyo.jp>           +#+  +:+       +#+        */
+/*   By: karai <karai@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 19:05:25 by karai             #+#    #+#             */
-/*   Updated: 2024/12/14 12:18:18 by karai            ###   ########.fr       */
+/*   Updated: 2024/12/15 09:32:55 by karai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main(int argc, char *argv[])
 
 	if (argc != 2)
 	{
-		ft_printf("The number of argument is wrong\n");
+		ft_printf("The number of argument is wrong. Error\n");
 		return (5);
 	}
 	md->getcoin = 0;

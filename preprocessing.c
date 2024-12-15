@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   preprocessing.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: karai <karai@student.42tokyo.jp>           +#+  +:+       +#+        */
+/*   By: karai <karai@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 20:56:25 by karai             #+#    #+#             */
-/*   Updated: 2024/12/14 12:08:48 by karai            ###   ########.fr       */
+/*   Updated: 2024/12/15 09:33:28 by karai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	get_width_height_ec(char *file_name, t_mapdata *md)
 	fd = open(file_name, O_RDONLY);
 	if (fd == -1)
 	{
-		ft_printf("File is not found.\n");
+		ft_printf("File is not found. Error\n");
 		exit(1);
 	}
 	while (1)
@@ -58,7 +58,7 @@ char	**get_map(char *file_name, t_mapdata *md)
 	fd = open(file_name, O_RDONLY);
 	if (fd == -1)
 	{
-		ft_printf("File is not found.\n");
+		ft_printf("File is not found. Error\n");
 		exit(1);
 	}
 	get_map_part(fd, map, md);
