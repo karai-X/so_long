@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: karai <karai@student.42tokyo.jp>           +#+  +:+       +#+        */
+/*   By: karai <karai@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 19:12:41 by karai             #+#    #+#             */
-/*   Updated: 2024/12/14 12:16:56 by karai            ###   ########.fr       */
+/*   Updated: 2024/12/15 08:57:18 by karai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,7 @@
 # include "mlx.h"
 # include <fcntl.h>
 # include <stddef.h>
-# include <stdio.h>
 # include <stdlib.h>
-# include <string.h>
 
 # define BLOCK_WIDTH 64
 # define BLOCK_HEIGHT 64
@@ -66,7 +64,14 @@ void		show_image(t_mapdata *md, size_t i, size_t j);
 int			ft_key_hook(int keycode, t_mapdata *md);
 void		finish(t_mapdata *md);
 int			map_close(t_mapdata *md);
+
 void		initialize_window(t_mapdata *md);
+void		initialize_window_part1(t_mapdata *md);
+void		initialize_window_part2(t_mapdata *md);
+void		initialize_window_part3(t_mapdata *md);
+void		initialize_window_part4(t_mapdata *md);
+void		initialize_window_part5(t_mapdata *md);
+void		initialize_window_part6(t_mapdata *md);
 
 void		move(t_mapdata *md, size_t dy, size_t dx);
 void		move_part(t_mapdata *md, size_t my, size_t mx);

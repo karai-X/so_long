@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utility_mlx.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: karai <karai@student.42tokyo.jp>           +#+  +:+       +#+        */
+/*   By: karai <karai@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 12:03:33 by karai             #+#    #+#             */
-/*   Updated: 2024/12/14 17:24:18 by karai            ###   ########.fr       */
+/*   Updated: 2024/12/15 09:21:46 by karai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,29 +74,6 @@ void	finish(t_mapdata *md)
 int	map_close(t_mapdata *md)
 {
 	finish(md);
-	ft_printf("You reached goal.\n");
+	ft_printf("You gave up.\n");
 	exit(0);
-}
-
-void	initialize_window(t_mapdata *md)
-{
-	size_t	i;
-	int		tmp1;
-
-	md->mlx = mlx_init();
-	md->mlx_win = mlx_new_window(md->mlx, BLOCK_WIDTH * md->win_width,
-			BLOCK_HEIGHT * md->win_height, "./so_long");
-	md->tile = mlx_xpm_file_to_image(md->mlx, IMG_TILE, &tmp1, &tmp1);
-	md->fish = mlx_xpm_file_to_image(md->mlx, IMG_FISH, &tmp1, &tmp1);
-	md->dolphin = mlx_xpm_file_to_image(md->mlx, IMG_DOLPHIN, &tmp1, &tmp1);
-	md->leaf = mlx_xpm_file_to_image(md->mlx, IMG_LEAF, &tmp1, &tmp1);
-	md->goal = mlx_xpm_file_to_image(md->mlx, IMG_GOAL, &tmp1, &tmp1);
-	md->goal_block = mlx_xpm_file_to_image(md->mlx, IMG_GOAL_BLOCK, &tmp1,
-			&tmp1);
-	i = 0;
-	while (i < md->win_width * md->win_height)
-	{
-		show_image(md, i / md->win_width, i % md->win_width);
-		i += 1;
-	}
 }

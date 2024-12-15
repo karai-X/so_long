@@ -11,9 +11,12 @@ SRC = main.c\
 		free.c\
 		move.c\
 		utility_mlx.c\
+		initialize1.c\
+		initialize2.c\
 
 LIBFTPRINTF = libftprintf.a
 LIBFTPRINTF_PATH = ./ft_printf
+MLX_PATH = ./mlx_linux
 LFLAGS = -L./mlx_linux -lmlx -lXext -lX11 -lm -lbsd
 
 OBJ = $(SRC:.c=.o)
@@ -29,6 +32,12 @@ $(NAME): $(OBJ) $(LIBFTPRINTF_PATH)/$(LIBFTPRINTF)
 
 $(LIBFTPRINTF_PATH)/$(LIBFTPRINTF):
 	make -C $(LIBFTPRINTF_PATH) all
+	
+mlx:
+	make -C $(MLX_PATH) all
+	
+mlx_clean:
+	make -C $(MLX_PATH) clean
 
 clean:
 	make -C $(LIBFTPRINTF_PATH) clean

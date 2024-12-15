@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: karai <karai@student.42tokyo.jp>           +#+  +:+       +#+        */
+/*   By: karai <karai@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 12:38:42 by karai             #+#    #+#             */
-/*   Updated: 2024/12/03 19:08:35 by karai            ###   ########.fr       */
+/*   Updated: 2024/12/15 09:17:55 by karai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,7 @@ bool	ft_get_next_buf(char buf[BUFFER_SIZE], t_list *lst_first,
 		return (true);
 	while (buf[i] != '\n' && i < BUFFER_SIZE && i < *read_byte)
 		i += 1;
-	if (BUFFER_SIZE != i && *read_byte != i && buf[i] == '\n')
+	if (i != *read_byte && buf[i] == '\n')
 	{
 		*end_flag = 1;
 		i += 1;
@@ -128,10 +128,9 @@ bool	ft_get_next_buf(char buf[BUFFER_SIZE], t_list *lst_first,
 	*read_byte = *read_byte - i;
 	if (ft_lst_append(i, buf, lst_first) == false)
 		return (false);
-	while (i + j < BUFFER_SIZE)
-	{
+	while (i + ++j < BUFFER_SIZE)
 		buf[j] = buf[i + j];
-		j += 1;
-	}
+	if (j != BUFFER_SIZE)
+		buf[j] = '\0';
 	return (true);
 }
